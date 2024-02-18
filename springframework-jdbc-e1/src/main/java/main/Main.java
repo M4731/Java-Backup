@@ -1,6 +1,7 @@
 package main;
 
 import config.ProjectConfig;
+import demo.Person;
 import models.Product;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import repositories.ProductRepository;
@@ -25,6 +26,11 @@ public class Main {
 
             List<Product> products = productRepository.getProducts();
             products.forEach(System.out::println);
+
+            // -------------------------
+
+            Person person = c.getBean(Person.class);
+            person.sayHello("Radu");
         }
     }
 }

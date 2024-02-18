@@ -9,7 +9,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages = "repositories")
+@ComponentScan(basePackages = "repositories, demo")
 public class ProjectConfig {
 
     @Bean
