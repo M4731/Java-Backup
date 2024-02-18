@@ -1,5 +1,7 @@
 package main;
 
+import beans.Cat;
+import beans.Owner;
 import config.ProjectConfig;
 import demo.Person;
 import models.Product;
@@ -9,6 +11,7 @@ import repositories.ProductRepository;
 import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) {
         try (var c = new AnnotationConfigApplicationContext(ProjectConfig.class)){
             ProductRepository productRepository = c.getBean(ProductRepository.class);
@@ -31,6 +34,15 @@ public class Main {
 
             Person person = c.getBean(Person.class);
             person.sayHello("Radu");
+
+            // -------------------------
+
+            Cat x = c.getBean(Cat.class);
+            Owner o =c.getBean(Owner.class);
+
+            x.setName("Leo");
+
+            System.out.println(x + "\n" + o);
         }
     }
 }
