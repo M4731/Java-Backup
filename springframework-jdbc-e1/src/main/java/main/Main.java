@@ -5,6 +5,8 @@ import models.Product;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import repositories.ProductRepository;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         try (var c = new AnnotationConfigApplicationContext(ProjectConfig.class)){
@@ -14,7 +16,15 @@ public class Main {
             p.setName("Beer");
             p.setPrice(10);
 
-            productRepository.addProduct(p);
+            Product pp = new Product();
+            pp.setName("Coke");
+            pp.setPrice(9);
+
+            //productRepository.addProduct(pp);
+            //productRepository.addProduct(p);
+
+            List<Product> products = productRepository.getProducts();
+            products.forEach(System.out::println);
         }
     }
 }

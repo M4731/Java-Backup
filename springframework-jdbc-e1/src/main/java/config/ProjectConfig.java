@@ -15,7 +15,7 @@ public class ProjectConfig {
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost/");
+        dataSource.setUrl("jdbc:mysql://localhost/demo");
         dataSource.setUsername("root");
         dataSource.setPassword("12345");
 
