@@ -19,7 +19,9 @@ public class Main {
 
 
             ProductService p = c.getBean(ProductService.class);
-            p.addOneProduct("Vodka",31);
+            //p.addOneProduct("Vodka",31);
+
+            p.addTenProducts();
 
         }
     }
