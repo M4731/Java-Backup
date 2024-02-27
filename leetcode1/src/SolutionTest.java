@@ -56,4 +56,13 @@ class SolutionTest {
 
     }
 
+    @Test
+    public void removeDuplicatesTest1(){
+        int[] input = new int[]{1,1,2};
+        int expectedOutput = 2;
+        int actualOutput = solution.removeDuplicates(input);
+
+        assertEquals(expectedOutput,actualOutput);
+    }
+
 }
