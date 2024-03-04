@@ -24,8 +24,8 @@ public class Main {
             pp.setName("Coke");
             pp.setPrice(9);
 
-            //productRepository.addProduct(pp);
-            //productRepository.addProduct(p);
+            productRepository.addProduct(pp);
+            productRepository.addProduct(p);
 
             List<Product> products = productRepository.getProducts();
             products.forEach(System.out::println);
