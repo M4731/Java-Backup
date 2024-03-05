@@ -29,4 +29,20 @@ class IndexOfTheFirstOccurrenceInAStringTest {
         Integer expectedOutput = -1;
         assertEquals(expectedOutput, solution.strStr(haystack, needle));
     }
+
+    @Test
+    void strStrTest4() {
+        String haystack = "misssissippi";
+        String needle = "issip";
+        Integer expectedOutput = 5;
+        assertEquals(expectedOutput, solution.strStr(haystack, needle));
+    }
+
+    @Test
+    void strStrTest5() {
+        String haystack = "misssissippi";
+        String needle = "pi";
+        Integer expectedOutput = 10;
+        assertEquals(expectedOutput, solution.strStr(haystack, needle));
+    }
 }

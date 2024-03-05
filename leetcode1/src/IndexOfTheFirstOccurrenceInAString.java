@@ -12,7 +12,6 @@ public class IndexOfTheFirstOccurrenceInAString {
                 if( helper.equals(needle)){
                     return i;
                 }
-                else i++;
             }
         }
         return -1;
