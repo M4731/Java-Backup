@@ -13,6 +13,11 @@ import java.util.List;
 @RestController //combinatie intre controller si restbody
 public class HelloController {
 
+    @GetMapping("/hello")
+    public String hello(){
+        return "Hello";
+    }
+
     // @ResponseBody  // nu cauta html in fisierul de resurse static
     @GetMapping(path = "/hello/{name}") // GET POST
     public String hello(@PathVariable("name") String name){
