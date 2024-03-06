@@ -2,6 +2,7 @@ package services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import repositories.ProductRepository;
@@ -12,7 +13,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    /**
+    /** TRANSACTIONAL
      * REQUIRED (default) - creeaza tranzactie daca nu are deja
      * REQUIRES_NEW - creeaza mereu tranzactie
      * MANDATORY - daca folosesti mandatory trebuie neaparat sa ai deja o tranzactie
@@ -22,6 +23,17 @@ public class ProductService {
      * NESTED - creeaza o tranzactie in tranzactia deja existenta
      *
      * a() ---> b()
+     */
+
+    /** ISOLATION
+     * DEFAULT -> READ COMMITTED
+     *
+     * READ_UNCOMMITTED
+     * READ_COMMITTED  <- dirty reads
+     * REPEATABLE_READ  <- dirty reads, repeatable reads
+     * SERIALEZABLE  <- dirty reads, repeatable reads, phantom reads
+     *
+     * problems : dirty reads, repeatable reads, phantom reads
      */
 
     @Transactional(rollbackFor = Exception.class)
@@ -49,6 +61,15 @@ public class ProductService {
 //            if(i==5) {
 //                throw new RuntimeException(":)");
 //            }
+        }
+    }
+
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public void addTenProductsIso() {
+        for (int i = 0; i < 11; i++) {
+            String n = "Product " + i;
+            double p = i*0.5 + 5;
+            productRepository.addProduct(n, p);
         }
     }
 }
