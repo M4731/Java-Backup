@@ -2,6 +2,7 @@ package com.matei.springboot101.controllers;
 
 import com.matei.springboot101.dto.Person;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 
 //@Controller
-@RestController //combinatie intre controller si restbody
+@RestController //combinatie intre controller si ResponseBody
 public class HelloController {
 
     @GetMapping("/hello")
@@ -54,6 +55,18 @@ public class HelloController {
     @GetMapping(path = "/statustest")
     public void statusTest(HttpServletResponse response){
         response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+    }
+
+
+    //GET NU TE LASA SA FOLOSESTI REQUEST BODY
+    @PostMapping(path = "/test/{name}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String test(@PathVariable String name,
+                       @RequestHeader String a,
+                       @RequestHeader String b,
+                       @RequestHeader String c,
+                       @RequestBody String body){
+        return name + " " + a + " " + b + " " + c + " " + body;
     }
 
 }
