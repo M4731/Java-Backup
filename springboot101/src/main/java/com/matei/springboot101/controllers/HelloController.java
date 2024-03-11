@@ -60,7 +60,6 @@ public class HelloController {
 
     //GET NU TE LASA SA FOLOSESTI REQUEST BODY
     @PostMapping(path = "/test/{name}")
-    @PreAuthorize("hasRole('ADMIN')")
     public String test(@PathVariable String name,
                        @RequestHeader String a,
                        @RequestHeader String b,

@@ -22,7 +22,7 @@ public class ProjectConfig {
         UserDetails user1 = User.withUsername("Matei")
                                 .password("12345")
                                 .roles("ADMIN")
-                                .authorities("write")
+                                .authorities("write","read")
                                 .build();
 
         UserDetails user2 = User.withUsername("Laur")
