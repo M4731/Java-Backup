@@ -2,12 +2,14 @@ package com.matei.springboot101.controllers;
 
 import com.matei.springboot101.dto.Person;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 //@Controller
@@ -64,8 +66,21 @@ public class HelloController {
                        @RequestHeader String a,
                        @RequestHeader String b,
                        @RequestHeader String c,
-                       @RequestBody String body){
+                       @RequestBody String body,
+                       HttpServletResponse response){
+        response.addHeader("test","good");
         return name + " " + a + " " + b + " " + c + " " + body;
+    }
+
+    @GetMapping(path = "/all")
+    public Map<String, String> all(@RequestHeader Map<String, String> map){
+        return map;
+    }
+
+    @GetMapping(path = "/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
+    public byte[] file(){
+        byte [] file = new byte[100];
+        return file;
     }
 
 }
