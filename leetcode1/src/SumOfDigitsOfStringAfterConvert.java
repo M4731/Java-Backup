@@ -1,38 +1,43 @@
+import java.math.BigInteger;
+
 public class SumOfDigitsOfStringAfterConvert {
 
     public int getLucky(String s, int k) {
 
-        long conv = convert(s);
+        BigInteger conv = convert(s);
 
-        if (conv < 10){
-            return (int) conv;
+        if (conv.compareTo(new BigInteger("10")) < 0){
+            return (int) conv.longValue();
         }
 
         for (int i = 0; i < k; i++) {
             conv = transform(conv);
         }
-        return (int) conv;
+        return (int) conv.longValue();
     }
 
-    public long convert(String s){
-        long result = 0;
+    public BigInteger convert(String s){
+        BigInteger result = new BigInteger("0");
 
         for (int i = 0; i < s.length(); i++) {
             if ( s.charAt(i) >= 'a' && s.charAt(i) <= 'i' ){
-                result = result * 10 + (int) s.charAt(i) - 96;
+                //result = result * 10 + (int) s.charAt(i) - 96;
+                result = result.multiply(new BigInteger("10")).add(new BigInteger(String.valueOf(s.charAt(i) - 96)));
             } else{
-              result = result * 100 + (int) s.charAt(i) - 96;
+                //result = result * 100 + (int) s.charAt(i) - 96;
+                result = result.multiply(new BigInteger("100")).add(new BigInteger(String.valueOf(s.charAt(i) - 96)));
             }
         }
 
         return result;
     }
 
-    public long transform(long n){
-        long result = 0;
-        while( n > 0 ){
-            result += n % 10;
-            n = n / 10;
+    public BigInteger transform(BigInteger n){
+        BigInteger result = new BigInteger("0");
+        while( n.compareTo(new BigInteger("0")) > 0 ){
+            //result += n % 10;
+            result =  result.add(n.mod(new BigInteger("10")));
+            n = n.divide(new BigInteger("10"));
         }
         return result;
     }
