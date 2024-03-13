@@ -33,4 +33,14 @@ public class ProductController {
 
     }
 
+    @GetMapping(path="/{name}")
+    public Product getProductTest(@PathVariable String name) {
+        Product p = new Product();
+
+        p.setName(name);
+        p.setPrice(10);
+
+        return p;
+    }
+
 }
