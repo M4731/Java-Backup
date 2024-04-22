@@ -1,10 +1,14 @@
 package com.example.SpringDemoAnnotations;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("singleton")
 public class TennisCoach implements Coach{
 
     @Autowired
@@ -35,5 +39,18 @@ public class TennisCoach implements Coach{
     @Override
     public String getDailyFortune() {
         return fortuneService.getFortune();
+    }
+
+    //define init method
+    @PostConstruct
+    public void startupStuff(){
+        System.out.println(">>TennisCoach : inside startupStuff");
+    }
+
+
+    //define destroy method
+    @PreDestroy
+    public void cleanupStuff(){
+        System.out.println(">>TennisCoach : inside cleanupStuff");
     }
 }

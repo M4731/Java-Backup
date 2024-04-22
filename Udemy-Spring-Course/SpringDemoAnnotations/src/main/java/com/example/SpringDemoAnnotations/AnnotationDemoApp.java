@@ -14,11 +14,10 @@ public class AnnotationDemoApp {
         Coach practiceCoach = context.getBean("antrenorSmecher", Coach.class);
 
         //call a method on the bean
-        System.out.println(coach.getDailyWorkout());
+        //System.out.println(coach.getDailyWorkout());
         System.out.println(practiceCoach.getDailyWorkout());
 
-        System.out.println(coach.getDailyFortune());
-
+        //System.out.println(coach.getDailyFortune());
         System.out.println(practiceCoach.getDailyFortune());
 
         //close the container
