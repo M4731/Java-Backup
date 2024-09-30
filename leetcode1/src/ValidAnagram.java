@@ -5,7 +5,7 @@ public class ValidAnagram {
 
     public boolean isAnagram(String s, String t) {
         if (s.isEmpty() && t.isEmpty()) return true;
-        if (s.isEmpty() && !t.isEmpty() || !s.isEmpty() && t.isEmpty()) return false;
+        if(s.length() != t.length()) return false;
 
         Map<Integer, Integer> frequence = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
